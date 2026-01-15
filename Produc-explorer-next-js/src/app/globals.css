@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ---------------------------------------
+   Base Theme (Light Mode)
+---------------------------------------- */
+:root {
+  /* Slightly darker background than card (so card pops) */
+  --background: #f3f4f6;  /* was #f9fafb */
+  --foreground: #0f172a;
+
+  /* Keep cards pure white */
+  --card: #ffffff;
+
+  /* Slightly stronger border for separation */
+  --border: #e5e7eb;
+
+  --muted: #6b7280;
+
+  --accent: #2563eb;
+  --accent-glow: #3b82f6;
+
+  /* Neutral shadow (no blue tint) */
+  --shadow-light: rgba(15, 23, 42, 0.08);
+}
+
+.dark {
+  /* Keep your dark background deep */
+  --background: #0b1120;
+  --foreground: #e2e8f0;
+
+  /* Make card a bit lighter than background */
+  --card: #0f172a; /* was #111827 */
+
+  --border: #1e293b;
+  --muted: #94a3b8;
+
+  --accent: #3b82f6;
+  --accent-glow: #60a5fa;
+
+  --shadow-light: rgba(0, 0, 0, 0.35); /* cleaner depth in dark mode */
+}
+
+
+/* ---------------------------------------
+   Global Styles
+---------------------------------------- */
+html {
+  color-scheme: light dark;
+  background-color: var(--background);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* ---------------------------------------
+   Headings
+---------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* ---------------------------------------
+   Cards
+---------------------------------------- */
+.card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px var(--shadow-light);
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px var(--shadow-light);
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------
+   Buttons
+---------------------------------------- */
+.btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  border-radius: 0.6rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px var(--accent-glow);
+}
+
+.btn:hover {
+  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------
+   Scrollbar
+---------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Theme utility helpers */
+.bg-app { background-color: var(--background); }
+.text-app { color: var(--foreground); }
+.bg-card { background-color: var(--card); }
+.border-app { border-color: var(--border); }
+.text-muted { color: var(--muted); }
+
+.badge-accent {
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.icon-accent {
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+  color: #fff;
+}
+.btn-accent:hover {
+  filter: brightness(0.96);
+}
